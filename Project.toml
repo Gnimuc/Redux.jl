@@ -1,0 +1,13 @@
+name = "Redux"
+uuid = "6d653af8-ad40-11e9-2720-9f1294ef7658"
+authors = ["Yupei Qi"]
+version = "0.1.0"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
