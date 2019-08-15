@@ -56,11 +56,14 @@ function renderloop(window, ctx, ui=()->nothing)
             ImGui_ImplGlfw_NewFrame()
             CImGui.NewFrame()
 
+            GLFW.MakeContextCurrent(window)
+            display_w, display_h = GLFW.GetFramebufferSize(window)
+            CImGui.SetNextWindowSize((display_w, display_h))
+            CImGui.SetNextWindowPos((0,0))
+
             ui()
 
             CImGui.Render()
-            GLFW.MakeContextCurrent(window)
-            display_w, display_h = GLFW.GetFramebufferSize(window)
             glViewport(0, 0, display_w, display_h)
             glClearColor(0.2, 0.2, 0.2, 1)
             glClear(GL_COLOR_BUFFER_BIT)

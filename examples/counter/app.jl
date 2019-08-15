@@ -29,4 +29,4 @@ function counter_ui(store)
     CImGui.End()
 end
 
-Renderer.render(()->counter_ui(store), width=180, height=180, title="App: Counter")
+Renderer.render(()->counter_ui(store), width=180, height=50, title="App: Counter")
