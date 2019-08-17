@@ -24,7 +24,7 @@ function counter_ui(store)
         CImGui.ArrowButton("##right", CImGui.ImGuiDir_Right) && dispatch!(store, Counter.INCREMENT)
         CImGui.PopButtonRepeat()
         CImGui.SameLine()
-        value = Counter.get_counter(get_state(store))
+        value = get_state(store).counter
         CImGui.Text("$value")
     CImGui.End()
 end

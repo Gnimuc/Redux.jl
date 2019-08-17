@@ -14,10 +14,8 @@ struct State <: AbstractImmutableState
     counter::Int
 end
 
-get_counter(state::State) = state.counter
-
-# reducers
-Redux.reducer(state::State, action::IncrementAction) = State(get_counter(state) + 1)
-Redux.reducer(state::State, action::DecrementAction) = State(get_counter(state) - 1)
+# reducer methods
+Redux.reducer(state::State, action::IncrementAction) = State(state.counter + 1)
+Redux.reducer(state::State, action::DecrementAction) = State(state.counter - 1)
 
 end # module
