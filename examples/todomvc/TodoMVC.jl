@@ -14,7 +14,7 @@ struct State <: AbstractImmutableState
     visibility::TodoFilter.State
 end
 
-const INITIAL_STATE = State(Todo.INITIAL_STATE, TodoFilter.SHOW_ALL)
+const INITIAL_STATE = State(Todo.INITIAL_STATE, TodoFilter.State(TodoFilter.SHOW_ALL))
 
 # reducers
 function Redux.reducer(state::State, action::AbstractSyncAction)

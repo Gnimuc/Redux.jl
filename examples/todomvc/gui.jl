@@ -11,7 +11,7 @@ function todo_input_ui(store)
     str = Vector{Cuchar}("What needs to be done?")
     append!(str, ['\0' for i = 1:buffer_len-length(str)])
     CImGui.PushItemWidth(-1)
-    if CImGui.InputText("###todo", str, buffer_len, flag)
+    if CImGui.InputText("###todo_input", str, buffer_len, flag)
         new_str = GC.@preserve str unsafe_string(pointer(str))
         dispatch!(store, Todo.AddTodo(new_str))
     end
@@ -20,17 +20,18 @@ end
 
 function todo_list_ui(store)
     todos = get_state(store).todos
-    visibility = get_state(store).visibility
+    visi = get_state(store).visibility
     flag = CImGui.ImGuiInputTextFlags_EnterReturnsTrue
     spacing = CImGui.GetStyle().ItemInnerSpacing.x
     buffer_len = 128
+
     CImGui.PushItemWidth(-1)
     CImGui.ListBoxHeader("List", -2)
         for i = 1:length(todos)
             id = todos[i].id
             status = todos[i].completed
-            visibility == TodoFilter.SHOW_ACTIVE && status && continue
-            visibility == TodoFilter.SHOW_COMPLETED && !status && continue
+            visi.filter == TodoFilter.SHOW_ACTIVE && status && continue
+            visi.filter == TodoFilter.SHOW_COMPLETED && !status && continue
             # todo marker
             check = Ref(status)
             CImGui.Checkbox("###todo_$id", check) && dispatch!(store, Todo.CompleteTodo(id))
@@ -74,7 +75,7 @@ function todo_mvc_ui(store)
            CImGui.ImGuiWindowFlags_NoFocusOnAppearing |
            CImGui.ImGuiWindowFlags_NoNav
     todos = get_state(store).todos
-    visibility = get_state(store).visibility
+    visi = get_state(store).visibility
     CImGui.Begin("TodoMVC", Ref(true), flag)
         todo_input_ui(store)
         CImGui.Separator()
@@ -85,11 +86,11 @@ function todo_mvc_ui(store)
         CImGui.TextColored((1.0,1.0,0.0,1.0), "$active_item_num items left.")
         CImGui.SameLine()
         # visibility filter
-        CImGui.RadioButton("All", visibility == TodoFilter.SHOW_ALL) && dispatch!(store, TodoFilter.SetVisibilityFilter("show_all"))
+        CImGui.RadioButton("All", visi.filter == TodoFilter.SHOW_ALL) && dispatch!(store, TodoFilter.SetVisibilityFilter(TodoFilter.SHOW_ALL))
         CImGui.SameLine()
-        CImGui.RadioButton("Active",  visibility == TodoFilter.SHOW_ACTIVE) && dispatch!(store, TodoFilter.SetVisibilityFilter("show_active"))
+        CImGui.RadioButton("Active", visi.filter == TodoFilter.SHOW_ACTIVE) && dispatch!(store, TodoFilter.SetVisibilityFilter(TodoFilter.SHOW_ACTIVE))
         CImGui.SameLine()
-        CImGui.RadioButton("Completed", visibility == TodoFilter.SHOW_COMPLETED) && dispatch!(store, TodoFilter.SetVisibilityFilter("show_completed"))
+        CImGui.RadioButton("Completed", visi.filter == TodoFilter.SHOW_COMPLETED) && dispatch!(store, TodoFilter.SetVisibilityFilter(TodoFilter.SHOW_COMPLETED))
         CImGui.SameLine()
         # clear completed
         if count(x -> x.completed, todos) != 0

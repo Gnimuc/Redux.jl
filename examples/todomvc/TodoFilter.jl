@@ -12,9 +12,9 @@ struct State <: AbstractImmutableState
     filter::String
 end
 
-const SHOW_ALL = State("show_all")
-const SHOW_COMPLETED = State("show_completed")
-const SHOW_ACTIVE = State("show_active")
+const SHOW_ALL = "show_all"
+const SHOW_COMPLETED = "show_completed"
+const SHOW_ACTIVE = "show_active"
 
 # reducers
 Redux.reducer(s::State, a::SetVisibilityFilter) = State(a.filter)
