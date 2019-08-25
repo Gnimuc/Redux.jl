@@ -24,9 +24,9 @@ function subscribe!(store::AbstractStore, listener::Base.Callable)
     is_subscribed = true
 
     if store.next_listeners === store.current_listeners
-        store.next_isteners = copy(store.current_listeners)
+        store.next_listeners = copy(store.current_listeners)
     end
-    push!(store.next_isteners, listener)
+    push!(store.next_listeners, listener)
 
     function unsubscribe!()
         !is_subscribed && return;
@@ -36,7 +36,7 @@ function subscribe!(store::AbstractStore, listener::Base.Callable)
         is_subscribed = false
 
         if store.next_listeners === store.current_listeners
-            store.next_isteners = copy(store.current_listeners)
+            store.next_listeners = copy(store.current_listeners)
         end
         deleteat!(store.next_listeners, findall(isequal(listener), store.next_listeners))
         empty!(store.current_listeners)
