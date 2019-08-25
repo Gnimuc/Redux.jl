@@ -17,6 +17,8 @@ const SHOW_COMPLETED = "show_completed"
 const SHOW_ACTIVE = "show_active"
 
 # reducers
-Redux.reducer(s::State, a::SetVisibilityFilter) = State(a.filter)
+todo_filter(state::AbstractState, action::AbstractAction) = state
+todo_filter(state::Vector{<:AbstractState}, action::AbstractAction) = state
+todo_filter(s::State, a::SetVisibilityFilter) = State(a.filter)
 
 end # module

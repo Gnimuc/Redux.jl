@@ -17,9 +17,11 @@ end
 const INITIAL_STATE = State(Todo.INITIAL_STATE, TodoFilter.State(TodoFilter.SHOW_ALL))
 
 # reducers
-function Redux.reducer(state::State, action::AbstractSyncAction)
-    next_todos = reducer(state.todos, action)
-    next_visibility = reducer(state.visibility, action)
+todo_mvc(state::AbstractState, action::AbstractAction) = state
+todo_mvc(state::Vector{<:AbstractState}, action::AbstractAction) = state
+function todo_mvc(state::State, action::AbstractSyncAction)
+    next_todos = Todo.todo(state.todos, action)
+    next_visibility = TodoFilter.todo_filter(state.visibility, action)
     return State(next_todos, next_visibility)
 end
 

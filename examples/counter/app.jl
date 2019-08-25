@@ -7,7 +7,7 @@ using .Counter
 include("../Renderer.jl")
 using .Renderer
 
-const store = create_store(reducer, Counter.State(0))
+const store = create_store(Counter.counter, Counter.State(0))
 
 function counter_ui(store)
     flag = CImGui.ImGuiWindowFlags_NoTitleBar |

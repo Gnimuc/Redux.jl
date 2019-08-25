@@ -8,7 +8,7 @@ import .TodoMVC: Todo, TodoFilter
 include("../Renderer.jl")
 using .Renderer
 
-const store = create_store(reducer, TodoMVC.INITIAL_STATE)
+const store = create_store(TodoMVC.todo_mvc, TodoMVC.INITIAL_STATE)
 
 include("gui.jl")
 

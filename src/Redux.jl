@@ -11,7 +11,4 @@ export create_store, get_state, subscribe!, dispatch!
 include("state.jl")
 export AbstractState, AbstractMutableState, AbstractImmutableState
 
-include("reducer.jl")
-export reducer
-
 end # module
