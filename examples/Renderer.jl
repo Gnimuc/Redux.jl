@@ -60,13 +60,8 @@ function renderloop(window, ctx, ui=()->nothing)
             display_w, display_h = GLFW.GetFramebufferSize(window)
             CImGui.SetNextWindowSize((display_w, display_h))
             CImGui.SetNextWindowPos((0,0))
-            try
-                ui()
-            catch e
-                @error "Error in renderloop!" exception=e
-                Base.show_backtrace(stderr, backtrace())
-                rethrow(e)
-            end
+
+            ui()
 
             CImGui.Render()
             glViewport(0, 0, display_w, display_h)
@@ -80,7 +75,7 @@ function renderloop(window, ctx, ui=()->nothing)
         end
     catch e
         @error "Error in renderloop!" exception=e
-        Base.show_backtrace(stderr, backtrace())
+        Base.show_backtrace(stderr, catch_backtrace())
     finally
         ImGui_ImplOpenGL3_Shutdown()
         ImGui_ImplGlfw_Shutdown()
