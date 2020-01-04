@@ -26,7 +26,7 @@ function todo_list_ui(store)
     buffer_len = 128
 
     CImGui.PushItemWidth(-1)
-    CImGui.ListBoxHeader("List", -2)
+    if CImGui.ListBoxHeader("List", -2)
         for i = 1:length(todos)
             id = todos[i].id
             status = todos[i].completed
@@ -63,14 +63,15 @@ function todo_list_ui(store)
             CImGui.PopStyleColor(3)
             CImGui.PopID()
         end
-    CImGui.ListBoxFooter()
+        CImGui.ListBoxFooter()
+    end
     CImGui.PopItemWidth()
 end
 
 function todo_mvc_ui(store)
+    # flag = 0
     flag = CImGui.ImGuiWindowFlags_NoTitleBar |
            CImGui.ImGuiWindowFlags_NoResize |
-           CImGui.ImGuiWindowFlags_AlwaysAutoResize |
            CImGui.ImGuiWindowFlags_NoSavedSettings |
            CImGui.ImGuiWindowFlags_NoFocusOnAppearing |
            CImGui.ImGuiWindowFlags_NoNav
