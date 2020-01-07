@@ -3,5 +3,7 @@ uuid = "f943f3d7-887a-4ed5-b0c0-a1d6899aa8f5"
 version = "0.1.0"
 
 [deps]
-CImGui = "5d785b6c-b76f-510e-a07c-3070796c7e87"
-Redux = "6d653af8-ad40-11e9-2720-9f1294ef7658"
+CSyntax = "ea656a56-6ca6-5dda-bba5-7b6963a5f74c"
+GLFW = "f7f18e0c-5ee9-5ccd-a5bf-e8befd85ed98"
+ModernGL = "66fc600b-dfda-50eb-8b99-91cfa97b1301"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"

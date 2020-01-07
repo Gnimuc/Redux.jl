@@ -8,18 +8,6 @@ git-tree-sha1 = "62847acab40e6855a9b5905ccb99c2b5cf6b3ebb"
 uuid = "fa961155-64e5-5f13-b03f-caf6b980ea82"
 version = "0.2.0"
 
-[[CImGui]]
-deps = ["CImGui_jll", "CSyntax", "GLFW", "Libdl", "ModernGL"]
-git-tree-sha1 = "0288edb742463fe8f1e561fb54491539d9528a8e"
-uuid = "5d785b6c-b76f-510e-a07c-3070796c7e87"
-version = "1.74.1"
-
-[[CImGui_jll]]
-deps = ["Libdl", "Pkg"]
-git-tree-sha1 = "68de486c376e676ffa45c39b76b1426a74d29e65"
-uuid = "7dd61d3b-0da5-5c94-bbf9-a0296c6e3925"
-version = "1.74.0+0"
-
 [[CSyntax]]
 deps = ["CEnum"]
 git-tree-sha1 = "369820f1403e8d0b2164427c9fc63d4b713e584b"
@@ -29,6 +17,10 @@ version = "0.3.0"
 [[Dates]]
 deps = ["Printf"]
 uuid = "ade2ca70-3891-5945-98fb-dc099432e06a"
+
+[[Distributed]]
+deps = ["Random", "Serialization", "Sockets"]
+uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 
 [[GLFW]]
 deps = ["GLFW_jll"]
@@ -90,7 +82,7 @@ uuid = "66fc600b-dfda-50eb-8b99-91cfa97b1301"
 version = "1.1.2"
 
 [[Pkg]]
-deps = ["Dates", "LibGit2", "Libdl", "Logging", "Markdown", "Printf", "REPL", "Random", "SHA", "UUIDs"]
+deps = ["Dates", "LibGit2", "Libdl", "Logging", "Markdown", "Printf", "REPL", "Random", "SHA", "Test", "UUIDs"]
 uuid = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 
 [[Printf]]
@@ -105,11 +97,6 @@ uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 deps = ["Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
-[[Redux]]
-path = "/Users/gnimuc/.julia/dev/Redux"
-uuid = "6d653af8-ad40-11e9-2720-9f1294ef7658"
-version = "0.1.0"
-
 [[SHA]]
 uuid = "ea8e919c-243c-51af-8825-aaa63cd721ce"
 
@@ -118,6 +105,10 @@ uuid = "9e88b42a-f829-5b0c-bbe9-9e923198166b"
 
 [[Sockets]]
 uuid = "6462fe0b-24de-5631-8697-dd941f90decc"
+
+[[Test]]
+deps = ["Distributed", "InteractiveUtils", "Logging", "Random"]
+uuid = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [[UUIDs]]
 deps = ["Random", "SHA"]
