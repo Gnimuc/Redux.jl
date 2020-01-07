@@ -1,0 +1,7 @@
+name = "App"
+uuid = "f943f3d7-887a-4ed5-b0c0-a1d6899aa8f5"
+version = "0.1.0"
+
+[deps]
+CImGui = "5d785b6c-b76f-510e-a07c-3070796c7e87"
+Redux = "6d653af8-ad40-11e9-2720-9f1294ef7658"
