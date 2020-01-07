@@ -7,7 +7,7 @@ include("../../todomvc/TodoMVC.jl")
 using .TodoMVC
 import .TodoMVC: Todo, TodoFilter
 
-include("../../Renderer.jl")
+include("Renderer.jl")
 using .Renderer
 
 include("../../todomvc/gui.jl")
