@@ -24,7 +24,8 @@ end
 
 function real_main()
     store = create_store(TodoMVC.todo_mvc, TodoMVC.INITIAL_STATE)
-    Renderer.render(()->todo_mvc_ui(store), width=600, height=300, title="App: TodoMVC")
+    t = Renderer.render(()->todo_mvc_ui(store), width=600, height=300, title="App: TodoMVC")
+    wait(t)
     return nothing
 end
 
