@@ -1,4 +1,4 @@
-# Create App using [PackageCompilerX](https://github.com/KristofferC/PackageCompilerX.jl)
+# Create App using [PackageCompilerX.jl](https://github.com/KristofferC/PackageCompilerX.jl)
 
 ## Prerequisites
 
@@ -40,4 +40,4 @@ Process(`../AppCompiled/bin/App`, ProcessExited(0))
 ```
 
 ## Screenshot
-[!app](./App.png)
+![app](App.png)
