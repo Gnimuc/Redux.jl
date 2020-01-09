@@ -87,8 +87,9 @@ end
 function render(ui; width=360, height=480, title::AbstractString="App")
     window, ctx = init_renderer(width, height, title)
     GC.@preserve window ctx begin
-        @async renderloop(window, ctx, ui)
+        t = @async renderloop(window, ctx, ui)
     end
+    return t
 end
 
 end # module
