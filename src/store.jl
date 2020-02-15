@@ -14,12 +14,12 @@ function Store(reducer, preloaded_state)
 end
 
 function get_state(store::AbstractStore)
-    store.is_dispatching && error("calling get_state() while the reducer is executing is not allowd in Redux.")
+    store.is_dispatching && error("calling `get_state()` while the reducer is executing is not allowd in Redux.")
     return store.current_state
 end
 
 function subscribe!(store::AbstractStore, listener::Base.Callable)
-    store.is_dispatching && error("calling subscribe() while the reducer is executing is not allowd in Redux.")
+    store.is_dispatching && error("calling `subscribe!()` while the reducer is executing is not allowd in Redux.")
 
     is_subscribed = true
 
@@ -45,7 +45,7 @@ function subscribe!(store::AbstractStore, listener::Base.Callable)
     return unsubscribe!
 end
 
-function dispatch!(store::AbstractStore, action::AbstractSyncAction)
+function dispatch!(store::Store, action::AbstractSyncAction)
     store.is_dispatching && error("reducers may not dispatch actions.")
 
     try
@@ -68,4 +68,3 @@ function create_store(reducer::Base.Callable, preloaded_state)
     dispatch!(store, ActionTypes.INIT)
     return store
 end
-create_store(reducer::Base.Callable, preloaded_state, enhancer::Base.Callable) = enhancer(create_store)(reducer, preloaded_state)
