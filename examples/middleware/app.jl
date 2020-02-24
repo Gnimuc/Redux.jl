@@ -21,11 +21,13 @@ end
 function more_logging(dispatch)
     new_dispatch = (s::Store, a::AbstractAction) -> begin
         result = dispatch(s, a)
-        @info "reducer:" s.reducer
-        @info "current_state:" s.current_state
-        @info "current_listeners:" s.current_listeners
-        @info "next_listeners:" s.next_listeners
-        @info "is_dispatching:" s.is_dispatching
+        @info """------------
+                 reducer: $(s.reducer)
+                 current_state: $(s.current_state)
+                 current_listeners: $(s.current_listeners)
+                 next_listeners: $(s.next_listeners)
+                 is_dispatching: $(s.is_dispatching)
+              """
         return result
     end
     return new_dispatch
