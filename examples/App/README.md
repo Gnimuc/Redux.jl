@@ -4,7 +4,7 @@
 
 - Julia-v1.3.1
 - PackageCompilerX#master
-- CImGui#master
+- CImGui
 
 ## Build
 ```shell
@@ -24,9 +24,9 @@ _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
 
 (App) pkg> st
 Project App v0.1.0
-Status `~/.julia/dev/Redux/examples/App/Project.toml`
-[5d785b6c] CImGui v1.74.1
-[6d653af8] Redux v0.1.0 [`../..`]
+    Status `~/.julia/dev/Redux/examples/App/Project.toml`
+  [5d785b6c] CImGui v1.74.2
+  [6d653af8] Redux v0.1.0
 
 julia> create_app("../App", "../AppCompiled", precompile_statements_file="precompile_app.jl", incremental=false, force=true)
 ┌ Warning: Package ModernGL has a build script, this might indicate that it is not relocatable
