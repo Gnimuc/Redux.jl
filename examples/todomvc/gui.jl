@@ -71,10 +71,10 @@ end
 function todo_mvc_ui(store)
     # flag = 0
     flag = CImGui.ImGuiWindowFlags_NoTitleBar |
-           CImGui.ImGuiWindowFlags_NoResize |
+           CImGui.ImGuiWindowFlags_AlwaysAutoResize |
            CImGui.ImGuiWindowFlags_NoSavedSettings |
-           CImGui.ImGuiWindowFlags_NoFocusOnAppearing |
-           CImGui.ImGuiWindowFlags_NoNav
+           CImGui.ImGuiWindowFlags_NoNav |
+           CImGui.ImGuiWindowFlags_NoScrollbar
     todos = get_state(store).todos
     visi = get_state(store).visibility
     CImGui.Begin("TodoMVC", Ref(true), flag)
