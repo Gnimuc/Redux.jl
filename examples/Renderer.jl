@@ -57,14 +57,14 @@ function renderloop(window, ctx, ui=()->nothing)
             CImGui.NewFrame()
 
             GLFW.MakeContextCurrent(window)
-            display_w, display_h = GLFW.GetFramebufferSize(window)
-            CImGui.SetNextWindowSize((display_w, display_h))
+            display_size = CImGui.GetIO().DisplaySize
+            CImGui.SetNextWindowSize((display_size.x, display_size.y))
             CImGui.SetNextWindowPos((0,0))
 
             ui()
 
             CImGui.Render()
-            glViewport(0, 0, display_w, display_h)
+            glViewport(0, 0, display_size.x, display_size.y)
             glClearColor(0.2, 0.2, 0.2, 1)
             glClear(GL_COLOR_BUFFER_BIT)
             ImGui_ImplOpenGL3_RenderDrawData(CImGui.GetDrawData())
